@@ -1,7 +1,7 @@
 === contentde ===
 Contributors: contentde
 Donate link: http://www.content.de/
-Tags: content.de, seo, text, unique content
+Tags: content.de, seo, text, unique content, copywriting, keywords, content creation, Content Erstellung, content optimization, crowdsourcing, optimized texts, search engine optimization, seo, SEOText, SEO Texte, suchmaschinenoptimierte Texte, suchmaschinenoptimierung, text creation, text optimization, texte, Texterstellung, Webinhalte generieren, blogger, content, content marketing, content software, copywriter, freelance writer, freelancer, hire blogger, hire writer, seo content, seo software, web site content, website content, writer
 Requires at least: 3.2
 Tested up to: 3.4
 Stable tag: 1.0
@@ -12,10 +12,22 @@ Manage all your content.de texts directly from your wordpress-blog.
 
 == Description ==
 
+English:
 The content.de wordpress-plugin allows you to access your content.de account
 directly from the wordpress backend. You can order texts, list, review and
 manage all the texts in your content.de account and import them in your
-wordpress-blog.
+wordpress-blog. With content.de you can order easily SEO Texts from a network of over 5000 authors.
+content.de delivers unique content. Every text ist checked by copyscape to avoid duplicate content in your blog.
+
+For further information visit <a href="http://www.content.de">www.content.de</a>
+
+Deutsch:
+Mit dem content.de Wordpress-Plugin haben Sie bequemen Zugriff aus dem Wordpress-Backend heraus auf Ihren content.de Account.
+So können Sie Texte beauftragen, abnehmen, überarbeiten und direkt in Ihren Wordpress-Blog übernehmen. Mit content.de können Sie ganz einfach
+SEO-Texte in einem Netzwerk mit über 5000 Autoren schreiben lassen. Content.de liefert Unique Content für Ihren Blog, denn jeder Text wird von Copyscape
+überprüft um Duplicate Content zu vermeiden.
+
+Für weitere Informaionen besuchen sie <a href="http://www.content.de">www.content.de</a>
 
 == Installation ==
 
