@@ -15,8 +15,8 @@ Manage all your content.de texts directly from your wordpress-blog.
 English:
 The content.de wordpress-plugin allows you to access your content.de account
 directly from the wordpress backend. You can order texts, list, review and
-manage all the texts in your content.de account and import them in your
-wordpress-blog. With content.de you can order easily SEO Texts from a network of over 5000 authors.
+manage all the texts in your content.de account and import them into your
+wordpress-blog. With content.de you can order easily SEO-texts from a network of over 5000 authors.
 content.de delivers unique content. Every text ist checked by copyscape to avoid duplicate content in your blog.
 
 For further information visit <a href="http://www.content.de">www.content.de</a>
@@ -24,10 +24,10 @@ For further information visit <a href="http://www.content.de">www.content.de</a>
 Deutsch:
 Mit dem content.de Wordpress-Plugin haben Sie bequemen Zugriff aus dem Wordpress-Backend heraus auf Ihren content.de Account.
 So können Sie Texte beauftragen, abnehmen, überarbeiten und direkt in Ihren Wordpress-Blog übernehmen. Mit content.de können Sie ganz einfach
-SEO-Texte in einem Netzwerk mit über 5000 Autoren schreiben lassen. Content.de liefert Unique Content für Ihren Blog, denn jeder Text wird von Copyscape
-überprüft um Duplicate Content zu vermeiden.
+SEO-Texte von einem Netzwerk mit über 5000 Autoren schreiben lassen. Content.de liefert Unique Content für Ihren Blog, denn jeder Text wird von Copyscape
+überprüft, um Duplicate Content zu vermeiden.
 
-Für weitere Informaionen besuchen sie <a href="http://www.content.de">www.content.de</a>
+Für weitere Informationen besuchen Sie <a href="http://www.content.de">www.content.de</a>
 
 == Installation ==
 
