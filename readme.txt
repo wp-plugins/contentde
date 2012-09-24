@@ -1,7 +1,7 @@
 === contentde ===
 Contributors: contentde
 Donate link: http://www.content.de/
-Tags: content.de, seo, text
+Tags: content.de, seo, text, unique content
 Requires at least: 3.2
 Tested up to: 3.4
 Stable tag: 1.0
@@ -31,10 +31,10 @@ To make the plugin work properly you must install the following PHP-modules:
 
 == Screenshots ==
 
-1. https://www.content.de/images/wp-plugin_login.png
-2. https://www.content.de/images/wp-plugin_neuer_auftrag.png
-3. https://www.content.de/images/wp-plugin_auftrag_bewerten.png
-4. https://www.content.de/images/wp-plugin_auftragsuebersicht.png
+1. wp-plugin_login.png
+2. wp-plugin_neuer_auftrag.png
+3. wp-plugin_auftrag_bewerten.png
+4. wp-plugin_auftragsuebersicht.png
 
 == Changelog ==
 
