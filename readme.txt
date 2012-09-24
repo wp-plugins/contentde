@@ -31,10 +31,10 @@ To make the plugin work properly you must install the following PHP-modules:
 
 == Screenshots ==
 
-1. wp-plugin_login.png
-2. wp-plugin_neuer_auftrag.png
-3. wp-plugin_auftrag_bewerten.png
-4. wp-plugin_auftragsuebersicht.png
+1. /assets/wp-plugin_login.png
+2. /assets/wp-plugin_neuer_auftrag.png
+3. /assets/wp-plugin_auftrag_bewerten.png
+4. /assets/wp-plugin_auftragsuebersicht.png
 
 == Changelog ==
 
