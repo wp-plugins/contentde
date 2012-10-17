@@ -32,6 +32,7 @@ class contentdeLogic
 	 * @var array
 	 */
 	static private $aErrorMapping = array(
+		'an error has occured' => 'Es ist ein Fehler aufgetreten. Bitte &uuml;berpr&uuml;fen Sie nochmal alle Eingaben.',
 		'not enough balance' => 'Sie haben nicht genug Guthaben. Bitte laden Sie ihr Konto auf.',
 		'order title too short' => 'Auftragstitel ist zu kurz.',
 		'order description too short' => 'Autorenbriefing ist zu kurz.',

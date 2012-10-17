@@ -72,7 +72,7 @@ foreach($aParams['briefings'] as $iTemplateId => $aTemplate)
 $aBriefings = $aSelectPlaceholder + $aBriefings;
 
 wp_enqueue_style('contentde-newOrder-css', contentdeHelper::getPluginUrl('css/contentdeNewOrder.css'));
-wp_enqueue_script('contentde-newOrder-js', contentdeHelper::getPluginUrl('js/contentdeNewOrder.js'));
+wp_enqueue_script('contentde-newOrder-js', contentdeHelper::getPluginUrl('js/contentdeNewOrder.js'), array(), false, true);
 
 add_filter('mce_buttons', 'contentdeFilterMceButtons');
 add_filter('mce_buttons_2', 'contentdeFilterMceButtons2');

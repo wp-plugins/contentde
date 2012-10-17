@@ -16,7 +16,11 @@
  */
 
 (function ($) {
+	
+	var calcOrder = false;
+	
 	$(document).ready(function () {
+
 		$(
 			'#orderTypeSelect select[name="new_order[type]"],' +
 			'#orderDataOO select[name="new_order[oo_level]"],' +
@@ -94,76 +98,75 @@
 					
 					$('#orderDataOO, #orderDataGO, #orderDataDO, #orderData').hide();
 			}
-		}).change();
-
-		$(
-			'#orderDataOO select[name="new_order[oo_level]"],' +
-			'#orderDataGO select[name="new_order[go_level]"],' +
-			'#orderDataDO select[name="new_order[do_contractor]"],' +
-			'#orderData input[name="new_order[max_words]"]'
-		).change(function () {
 			
-			var type = $('#orderTypeSelect select[name="new_order[type]"]').val();
-			var wordCount = $('#orderData input[name="new_order[max_words]"]').val();
-			var level = '';
-
-			$('#loadingCosts').show();
-			
-			switch(type)
+			if($('#orderData:visible').length > 0 && calcOrder == false)
 			{
-				case 'oo':
-					level = $('#orderDataOO select[name="new_order[oo_level]"]').val();
-					break;
-				case 'go':
-					level = $('#orderDataGO select[name="new_order[go_level]"]').val();
-					break;
-				case 'do':
-					level = $('#orderDataDO select[name="new_order[do_contractor]"]').val();
-					break;
-			}
-			
-			$.post(
-				ajaxurl,
+				calcOrder = true;
+				
+				var type = $('#orderTypeSelect select[name="new_order[type]"]').val();
+				var wordCount = $('#orderData input[name="new_order[max_words]"]').val();
+				var level = '';
+
+				$('#loadingCosts').show();
+				
+				switch(type)
 				{
-					'action': 'contentde-calcNewOrder',
-					'type': type,
-					'level': level,
-					'wordCount': wordCount
-				},
-				function (result) {
-					if(result)
+					case 'oo':
+						level = $('#orderDataOO select[name="new_order[oo_level]"]').val();
+						break;
+					case 'go':
+						level = $('#orderDataGO select[name="new_order[go_level]"]').val();
+						break;
+					case 'do':
+						level = $('#orderDataDO select[name="new_order[do_contractor]"]').val();
+						break;
+				}
+				
+				$.post(
+					ajaxurl,
 					{
-						if(result.avail_balance)
+						'action': 'contentde-calcNewOrder',
+						'type': type,
+						'level': level,
+						'wordCount': wordCount
+					},
+					function (result) {
+						if(result)
 						{
-							$('#avail_balance').html(result.avail_balance);
+							if(result.avail_balance)
+							{
+								$('#avail_balance').html(result.avail_balance);
+							}
+
+							if(result.avail_budget)
+							{
+								$('#avail_budget_row').show();
+								$('#avail_budget').html(result.avail_budget);
+							}
+							else
+							{
+								$('#avail_budget_row').hide();
+							}
+
+							if(result.order_costs_per_word)
+							{
+								$('#order_costs_per_word').html(result.order_costs_per_word);
+							}
+
+							if(result.order_costs_per_word)
+							{
+								$('#order_costs').html(result.order_costs);
+							}
 						}
 
-						if(result.avail_budget)
-						{
-							$('#avail_budget_row').show();
-							$('#avail_budget').html(result.avail_budget);
-						}
-						else
-						{
-							$('#avail_budget_row').hide();
-						}
-
-						if(result.order_costs_per_word)
-						{
-							$('#order_costs_per_word').html(result.order_costs_per_word);
-						}
-
-						if(result.order_costs_per_word)
-						{
-							$('#order_costs').html(result.order_costs);
-						}
-					}
-
-					$('#loadingCosts').hide();
-				},
-				'json'
-			);
-		});
+						$('#loadingCosts').hide();
+						
+						calcOrder = false;
+					},
+					'json'
+				);
+			}
+		}).change();
 		
 		$('#new_order_briefing_template').change(function () {
 			var id = $(this).val();
