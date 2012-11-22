@@ -38,7 +38,10 @@ class contentdeRpcModuleSoap extends contentdeRpcModule
 	 */
 	public function __construct()
 	{
-		$this->oSoapClient = new SoapClient(CONTENTDE_URL_WSDL);
+		$this->oSoapClient = new SoapClient(
+			CONTENTDE_URL_WSDL,
+			array('cache_wsdl' => WSDL_CACHE_NONE)
+		);
 	}
 
 	/**
