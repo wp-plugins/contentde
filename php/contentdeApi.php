@@ -75,6 +75,24 @@ class contentdeApi
 	}
 
 	/**
+	 * @return bool
+	 */
+	static public function testConnection()
+	{
+		try
+		{
+			$oApi = new self;
+
+			return $oApi->test() == 'test';
+		}
+		catch(Exception $oError)
+		{
+		}
+
+		return false;
+	}
+
+	/**
 	 * @return void
 	 */
 	private function determineRpcModule()
@@ -622,6 +640,16 @@ class contentdeApi
 			'g' . 'etLoginInfo',
 			$this->sSessionHash
 		);
+
+		return $aResult['Records'];
+	}
+
+	/**
+	 * @return string
+	 */
+	public function test()
+	{
+		$aResult = $this->getRpcModule()->doRequest('t' . 'est');
 
 		return $aResult['Records'];
 	}

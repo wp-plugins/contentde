@@ -198,6 +198,22 @@ class contentdeController
 				trigger_error($sError, E_USER_ERROR);
 			}
 		}
+
+		if(!contentdeApi::testConnection())
+		{
+			$sError  = '<div>Es kann keine Verbindung zum content.de Server hergestellt werden.</div>';
+			$sError .= '<div>Bitte stellen Sie sicher, dass <strong>PHP</strong> und die Module <strong>SOAP</strong> bzw. <strong>xmlrpc</strong> richtig konfiguriert sind.</div>';
+
+			if(isset($_GET['action']) && $_GET['action'] == 'error_scrape')
+			{
+				echo $sError;
+				exit;
+			}
+			else
+			{
+				trigger_error($sError, E_USER_ERROR);
+			}
+		}
 	}
 
 	/**

@@ -162,7 +162,9 @@ class contentdeRpcModuleXmlrpc extends contentdeRpcModule
 			CURLOPT_FOLLOWLOCATION => true,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_TIMEOUT => 50,
-			CURLOPT_HTTPHEADER => $aHeaders
+			CURLOPT_HTTPHEADER => $aHeaders,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_SSL_VERIFYHOST => false
 		));
 
 		$sResponse = curl_exec($rCurl);
