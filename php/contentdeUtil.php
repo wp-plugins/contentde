@@ -136,6 +136,19 @@ class contentdeHelper
 	{
 		return str_replace('.', ',', sprintf('%.2f', (float) $fNumber)) . ' ' . $sSuffix;
 	}
+
+	/**
+	 * @param string $sText
+	 * @return string
+	 */
+	static public function replaceBBCode($sText)
+	{
+		return preg_replace(
+			'/\\[(?:\s*(\\/?)\s*(' . implode('|', array('strong', 'b', 'u', 'i', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'em', 'blockquote')) . ')\s*)\\]/i',
+			'<\\1\\2>',
+			$sText
+		);
+	}
 }
 
 class contentdePager

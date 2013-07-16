@@ -44,15 +44,15 @@ class contentdeLogic
 		'no user found' => 'Es konnte kein User gefunden werden.',
 		'no categories found' => 'Es konnten keine Kategorien gefunden werden.',
 		'no categories/user found' => 'Es konnten keine Kategorien gefunden werden.',
-		'values for content rating must be between -2 and 2' => 'Werte für die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
-		'values for form rating must be between -2 and 2' => 'Werte für die Bewertung müssen zwischen -2 und 2 liegen.',
-		'values for readability rating must be between -2 and 2' => 'Werte für die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
-		'values for communication rating must be between -2 and 2' => 'Werte für die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
+		'values for content rating must be between -2 and 2' => 'Werte fï¿½r die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
+		'values for form rating must be between -2 and 2' => 'Werte fï¿½r die Bewertung mï¿½ssen zwischen -2 und 2 liegen.',
+		'values for readability rating must be between -2 and 2' => 'Werte fï¿½r die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
+		'values for communication rating must be between -2 and 2' => 'Werte fï¿½r die Bewertung m&uuml;ssen zwischen -2 und 2 liegen.',
 		'error writing data, please contact support' => 'Daten konnten nicht geschrieben werden.',
 		'no orders found to be rated' => 'Es konnte kein Auftrag gefunden werden, der bewertet werden k&ouml;nnte',
 		'invalid order-id' => 'Ung&uuml;ltige Auftrags-ID.',
 		'no text to revise found' => 'Es konnte kein Text gefunden werden, der in Revision gegeben werden k&ouml;nnte.',
-		'no text to reject found' => 'Es konnte kein Text gefunden werden, für den eine Ablehnung beantragt werden k&ouml;nnte.',
+		'no text to reject found' => 'Es konnte kein Text gefunden werden, fï¿½r den eine Ablehnung beantragt werden k&ouml;nnte.',
 		'Please add a  comment' => 'Bitte geben Sie einen Kommentar ein.',
 		'page not found' => 'Seite konnte nicht gefunden werden',
 		'invalid order type' => 'ung&uuml;tiger Auftragstyp',
@@ -580,7 +580,7 @@ class contentdeLogic
 						}
 
 						$aOrder['title'] = $aRealOrder['title'];
-						$aOrder['content'] = $aRealOrder['text'];
+						$aOrder['content'] = contentdeHelper::replaceBBCode($aRealOrder['text']);
 						$aOrder['keywords'] = $aKeywords;
 					}
 				}
