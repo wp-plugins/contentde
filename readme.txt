@@ -4,7 +4,7 @@ Donate link: http://www.content.de/
 Tags: content.de, seo, text, unique content, copywriting, keywords, content creation, Content Erstellung, content optimization, crowdsourcing, optimized texts, search engine optimization, seo, SEOText, SEO Texte, suchmaschinenoptimierte Texte, suchmaschinenoptimierung, text creation, text optimization, texte, Texterstellung, Webinhalte generieren, blogger, content, content marketing, content software, copywriter, freelance writer, freelancer, hire blogger, hire writer, seo content, seo software, web site content, website content, writer
 Requires at least: 3.2
 Tested up to: 3.5.2
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ To make the plugin work properly you must install the following PHP-modules:
 
 == Changelog ==
 
+= 1.0.5 =
+* More debug informations will be displayed when the plugin failed to activate
+
 = 1.0.4 =
 * BBCodes are now replaced with the respective HTML tags
 
@@ -63,7 +66,7 @@ To make the plugin work properly you must install the following PHP-modules:
 = 1.0.1 =
 * Added missing error translations
 * Fixed ajax requests after form submissions
-* TinyMCE now works properly in Firefox when placing a new order 
+* TinyMCE now works properly in Firefox when placing a new order
 
 = 1.0 =
 * Initial release
