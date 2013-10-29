@@ -59,7 +59,7 @@ class contentdeApi
 	}
 
 	/**
-	 * @return bool
+	 * @return void
 	 */
 	static public function testModules()
 	{
@@ -67,29 +67,31 @@ class contentdeApi
 		{
 			if(extension_loaded($sModule))
 			{
-				return true;
+				return;
 			}
 		}
 
-		return false;
+		throw new LogicException('there is no possible rpc module');
 	}
 
 	/**
-	 * @return bool
+	 * @return void
 	 */
 	static public function testConnection()
 	{
-		try
-		{
-			$oApi = new self;
+		$oApi = new self;
 
-			return $oApi->test() == 'test';
-		}
-		catch(Exception $oError)
-		{
-		}
+		$sExpectedValue = 'test';
+		$sRealValue = $oApi->test();
 
-		return false;
+		if($sRealValue != $sExpectedValue)
+		{
+			throw new Exception(sprintf(
+				'test function did not return correct value; expected="%s"; got="%s"',
+				$sExpectedValue,
+				$sRealValue
+			));
+		}
 	}
 
 	/**
@@ -107,7 +109,7 @@ class contentdeApi
 
 					if(!($this->oRpcModule instanceof contentdeRpcModule))
 					{
-						throw new LogicException('invalid rpc module class');
+						throw new LogicException(sprintf('%s is an invalid rpc module class', $sClass));
 					}
 
 					return;

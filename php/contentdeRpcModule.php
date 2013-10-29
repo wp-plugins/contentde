@@ -106,7 +106,7 @@ class contentdeRpcModuleXmlrpc extends contentdeRpcModule
 	{
 		if(!extension_loaded('curl'))
 		{
-			throw new Exception('this module requires cUrl');
+			throw new Exception('the xmlrpc module requires cUrl to work properly');
 		}
 	}
 
@@ -171,12 +171,18 @@ class contentdeRpcModuleXmlrpc extends contentdeRpcModule
 		));
 
 		$sResponse = curl_exec($rCurl);
+		$aInfo = curl_getinfo($rCurl);
+
+		if($aInfo['http_code'] != 200)
+		{
+			throw new Exception(sprintf('cUrl request failed: %s', print_r($aInfo, true)));
+		}
 
 		$aResponse = xmlrpc_decode($sResponse);
 
 		if(is_array($aResponse) && isset($aResponse['faultCode']) && isset($aResponse['faultString']))
 		{
-			throw new Exception($aResponse['faultString'], (int) $aResponse['faultCode']);
+			throw new Exception(sprintf('%s %s', $aResponse['faultString'], print_r($aInfo, true)), (int) $aResponse['faultCode']);
 		}
 
 		$aResponse = $this->decode($aResponse);

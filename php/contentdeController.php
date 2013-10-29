@@ -183,10 +183,15 @@ class contentdeController
 	 */
 	static public function onActivate()
 	{
-		if(!contentdeApi::testModules())
+		try
+		{
+			contentdeApi::testModules();
+		}
+		catch(Exception $oError)
 		{
 			$sError  = '<div>Ihre PHP-Installation unterst&uuml;tzt weder <strong>SOAP</strong> noch <strong>xmlrpc</strong>.</div>';
 			$sError .= '<div>Bitte installieren oder aktivieren Sie eines der genannten PHP-Module, da das Plugin sonst nicht verwendet werden kann.</div>';
+			$sError .= '<div><strong>Folgender Fehler ist aufgetreten:</strong> ' . $oError->getMessage() . '</div>';
 
 			if(isset($_GET['action']) && $_GET['action'] == 'error_scrape')
 			{
@@ -199,10 +204,15 @@ class contentdeController
 			}
 		}
 
-		if(!contentdeApi::testConnection())
+		try
+		{
+			contentdeApi::testConnection();
+		}
+		catch(Exception $oError)
 		{
 			$sError  = '<div>Es kann keine Verbindung zum content.de Server hergestellt werden.</div>';
 			$sError .= '<div>Bitte stellen Sie sicher, dass <strong>PHP</strong> und die Module <strong>SOAP</strong> bzw. <strong>xmlrpc</strong> richtig konfiguriert sind.</div>';
+			$sError .= '<div><strong>Folgender Fehler ist aufgetreten:</strong> ' . $oError->getMessage() . '</div>';
 
 			if(isset($_GET['action']) && $_GET['action'] == 'error_scrape')
 			{
