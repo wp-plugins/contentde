@@ -162,7 +162,6 @@ class contentdeRpcModuleXmlrpc extends contentdeRpcModule
 
 		curl_setopt_array($rCurl, array(
 			CURLOPT_POSTFIELDS => $sRpcRequest,
-			CURLOPT_FOLLOWLOCATION => true,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_TIMEOUT => 50,
 			CURLOPT_HTTPHEADER => $aHeaders,

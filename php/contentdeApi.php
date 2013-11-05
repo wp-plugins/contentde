@@ -61,22 +61,6 @@ class contentdeApi
 	/**
 	 * @return void
 	 */
-	static public function testModules()
-	{
-		foreach(self::$aModules as $sModule => $sClass)
-		{
-			if(extension_loaded($sModule))
-			{
-				return;
-			}
-		}
-
-		throw new LogicException('there is no possible rpc module');
-	}
-
-	/**
-	 * @return void
-	 */
 	static public function testConnection()
 	{
 		$oApi = new self;
@@ -101,22 +85,35 @@ class contentdeApi
 	{
 		if(!($this->oRpcModule instanceof contentdeRpcModule))
 		{
+			$aErrors = array();
+
 			foreach(self::$aModules as $sModule => $sClass)
 			{
 				if(extension_loaded($sModule))
 				{
-					$this->oRpcModule = new $sClass;
-
-					if(!($this->oRpcModule instanceof contentdeRpcModule))
+					try
 					{
-						throw new LogicException(sprintf('%s is an invalid rpc module class', $sClass));
-					}
+						$this->oRpcModule = new $sClass;
 
-					return;
+						if($this->oRpcModule instanceof contentdeRpcModule)
+						{
+							return;
+						}
+					}
+					catch(Exception $oError)
+					{
+						$aErrors[] = $oError->getMessage();
+					}
+				}
+				else
+				{
+					$aErrors[] = sprintf('php module "%s" is not installed or activated', $sModule);
 				}
 			}
 
-			throw new LogicException('there is no possible rpc module');
+			$sErrorAddition = count($aErrors) > 0 ? '; ' . implode('; ', $aErrors) : '';
+
+			throw new LogicException('there is no possible rpc module' . $sErrorAddition);
 		}
 	}
 
