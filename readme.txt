@@ -3,8 +3,8 @@ Contributors: contentde
 Donate link: http://www.content.de/
 Tags: content.de, seo, text, unique content, copywriting, keywords, content creation, Content Erstellung, content optimization, crowdsourcing, optimized texts, search engine optimization, seo, SEOText, SEO Texte, suchmaschinenoptimierte Texte, suchmaschinenoptimierung, text creation, text optimization, texte, Texterstellung, Webinhalte generieren, blogger, content, content marketing, content software, copywriter, freelance writer, freelancer, hire blogger, hire writer, seo content, seo software, web site content, website content, writer
 Requires at least: 3.2
-Tested up to: 3.5.2
-Stable tag: 1.0.5
+Tested up to: 3.7.1
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ To make the plugin work properly you must install the following PHP-modules:
 4. creating a new order
 
 == Changelog ==
+
+= 1.0.6 =
+* a broken rpc module does not prevent module activation
+* removed CURLOPT_FOLLOWLOCATION from the xmlrpc module, which caused problems with servers that use the ini-setting open_basedir
 
 = 1.0.5 =
 * More debug informations will be displayed when the plugin failed to activate
