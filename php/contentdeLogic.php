@@ -196,6 +196,11 @@ class contentdeLogic
 				self::$aSucesses[] = 'Der Auftrag wurde erfolgreich erstellt.';
 			}
 
+			if($oRequest->hasParam('contentdeOrderSaved'))
+			{
+				self::$aSucesses[] = 'Der Auftrag wurde erfolgreich gespeichert.';
+			}
+
 			if($oRequest->hasParam('contentdeActivated'))
 			{
 				self::$aSucesses[] = 'Ihre Zugangsdaten wurden erfolgreich gespeichert.';
@@ -309,17 +314,37 @@ class contentdeLogic
 
 		$aFormData = array();
 
-		if($oRequest->isMethod('post') && $oRequest->hasParam('create_new_order'))
+		if($oRequest->hasParam('remove_saved_order'))
+		{
+			self::removeSavedOrder((int) $oRequest->getParam('remove_saved_order'));
+
+			self::$aSucesses[] = 'Auftrag wurde erfolgreich gel&ouml;scht.';
+		}
+
+		if($oRequest->isMethod('post') && $oRequest->hasParam('new_order'))
 		{
 			$aFormData = (array) $oRequest->getParam('new_order', array());
 
 			try
 			{
-				$oApiHandler->createOrder($aFormData);
+				$aParams = array();
+
+				if($oRequest->hasParam('create_new_order'))
+				{
+					$oApiHandler->createOrder($aFormData);
+
+					$aParams = array('contentdeOrderCreated' => 1);
+				}
+				elseif($oRequest->hasParam('save_new_order'))
+				{
+					self::saveOrder($aFormData);
+
+					$aParams = array('contentdeOrderSaved' => 1);
+				}
 
 				if($oRequest->hasParam('noheader'))
 				{
-					wp_redirect(contentdeHelper::getPageUrl('main', array('contentdeOrderCreated' => 1)));
+					wp_redirect(contentdeHelper::getPageUrl('main', $aParams));
 					die();
 				}
 			}
@@ -334,7 +359,19 @@ class contentdeLogic
 			}
 		}
 
+		$iSavedOrderId = null;
+
+		if($oRequest->hasParam('load_order'))
+		{
+			$iSavedOrderId = (int) $oRequest->getParam('load_order');
+
+			$aFormData = self::getSavedOrder($iSavedOrderId);
+		}
+
 		return array(
+			'savedOrders' => self::getSavedOrders(),
+			'savedOrderId' => $iSavedOrderId,
+
 			'levels' => $oApiHandler->getLevelsSimple(),
 			'groups' => $oApiHandler->getGroups(),
 			'contractors' => $oApiHandler->getContractorsSimple(),
@@ -591,6 +628,76 @@ class contentdeLogic
 		}
 
 		return $aOrder;
+	}
+
+	/**
+	 * @return array
+	 */
+	static private function getSavedOrdersRaw()
+	{
+		return json_decode(get_option(CONTENTDE_PARAM_SAVED_ORDERS, '[]'), true);
+	}
+
+	/**
+	 * @param array $aOrders
+	 * @return void
+	 */
+	static private function setSavedOrdersRaw($aOrders)
+	{
+		update_option(CONTENTDE_PARAM_SAVED_ORDERS, json_encode($aOrders));
+	}
+
+	/**
+	 * @param array $aData
+	 * @return void
+	 */
+	static private function saveOrder($aData)
+	{
+		$aOrders = self::getSavedOrdersRaw();
+
+		$aOrders[] = $aData;
+
+		self::setSavedOrdersRaw($aOrders);
+	}
+
+	/**
+	 * @param int $iId
+	 * @return void
+	 */
+	static private function removeSavedOrder($iId)
+	{
+		$aOrders = self::getSavedOrdersRaw();
+
+		if(isset($aOrders[$iId]))
+		{
+			unset($aOrders[$iId]);
+
+			self::setSavedOrdersRaw($aOrders);
+		}
+	}
+
+	/**
+	 * @param int $iId
+	 * @return array
+	 */
+	static private function getSavedOrder($iId)
+	{
+		$aOrders = self::getSavedOrdersRaw();
+
+		if(isset($aOrders[$iId]))
+		{
+			return $aOrders[$iId];
+		}
+
+		return array();
+	}
+
+	/**
+	 * @return array
+	 */
+	static private function getSavedOrders()
+	{
+		return self::getSavedOrdersRaw();
 	}
 }
 

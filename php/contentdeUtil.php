@@ -29,6 +29,7 @@ class contentdeHelper
 		delete_option(CONTENTDE_PARAM_LAST_ARCHIVE);
 		delete_option(CONTENTDE_PARAM_LOGIN);
 		delete_option(CONTENTDE_PARAM_PASSWORD);
+		delete_option(CONTENTDE_PARAM_SAVED_ORDERS);
 	}
 
 	/**

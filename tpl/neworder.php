@@ -91,7 +91,47 @@ var briefings = <?php echo json_encode($aParams['briefings']); ?>;
 	<?php echo contentdeLogic::showErrors(); ?>
 	<?php echo contentdeLogic::showSuccesses(); ?>
 
+	<?php if(count($aParams['savedOrders']) > 0): ?>
+
+	<div id="savedOrders">
+		<h3>Zwischengespeicherte Auftr&auml;ge</h3>
+
+		<table class="wp-list-table widefat fixed">
+			<thead>
+				<tr>
+					<th>Titel</th>
+					<th>bearbeiten</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($aParams['savedOrders'] as $iId => $aData): ?>
+				<tr>
+					<td>
+						<?php echo contentdeHelper::getValue($aData, 'title', 'unbenannt') ?>
+
+						<?php if($iId === $aParams['savedOrderId']): ?>
+						(ausgew&auml;hlt)
+						<?php endif; ?>
+					</td>
+					<td>
+						<a href="<?php echo contentdeHelper::getPageUrl('newOrder', array('load_order' => $iId)) ?>">Auftrag laden</a>
+						/
+						<a href="<?php echo contentdeHelper::getPageUrl('newOrder', array('remove_saved_order' => $iId)) ?>">Auftrag l&ouml;schen</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+
+	</div>
+
+	<?php endif; ?>
+
 	<form action="<?php echo contentdeHelper::getPageUrl('newOrder', array('noheader' => 1)); ?>" method="post">
+
+		<?php if($aParams['savedOrderId'] !== null): ?>
+		<input type="hidden" name="remove_saved_order" value="<?php echo $aParams['savedOrderId'] ?>" />
+		<?php endif; ?>
 
 		<div id="orderTypeSelect">
 			<h3>Auftragstyp w&auml;hlen</h3>
@@ -259,6 +299,7 @@ var briefings = <?php echo json_encode($aParams['briefings']); ?>;
 					<th>&nbsp;</th>
 					<td colspan="2">
 						<input type="submit" name="create_new_order" value="Auftrag anlegen" class="button-primary" />
+						<input type="submit" name="save_new_order" value="Auftrag zwischenspeichern" class="button-primary" />
 					</td>
 				</tr>
 
