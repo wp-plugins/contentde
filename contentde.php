@@ -20,7 +20,7 @@
 Plugin Name: content.de Wordpress-Plugin
 Plugin URI: http://www.content.de/wordpress-plugin
 Description: Verwalten Sie Ihre content.de Auftr&auml;ge direkt aus Wordpress heraus.
-Version: 1.0.7
+Version: 1.0.8
 Author: content.de AG
 Author URI: http://www.content.de/
 License: GPLv2

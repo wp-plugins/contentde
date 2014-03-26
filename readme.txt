@@ -1,10 +1,10 @@
-=== contentde ===
+﻿=== contentde ===
 Contributors: contentde
 Donate link: http://www.content.de/
 Tags: content.de, seo, text, unique content, copywriting, keywords, content creation, Content Erstellung, content optimization, crowdsourcing, optimized texts, search engine optimization, seo, SEOText, SEO Texte, suchmaschinenoptimierte Texte, suchmaschinenoptimierung, text creation, text optimization, texte, Texterstellung, Webinhalte generieren, blogger, content, content marketing, content software, copywriter, freelance writer, freelancer, hire blogger, hire writer, seo content, seo software, web site content, website content, writer
 Requires at least: 3.2
-Tested up to: 3.7.1
-Stable tag: 1.0.7
+Tested up to: 3.8.1
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ To make the plugin work properly you must install the following PHP-modules:
 4. creating a new order
 
 == Changelog ==
+
+= 1.0.8 =
+* fixed decoding of xmlrpc messages
 
 = 1.0.7 =
 * users can now cache their content.de orders for later use.
