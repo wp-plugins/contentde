@@ -207,8 +207,8 @@ class contentdeRpcModuleXmlrpc extends contentdeRpcModule
 
 		if(is_string($mData))
 		{
-
-			$mData = html_entity_decode(html_entity_decode(html_entity_decode(htmlentities($mData), ENT_QUOTES, 'utf-8'), ENT_QUOTES, 'utf-8'), ENT_QUOTES, 'utf-8');
+			$mData = utf8_encode($mData);
+			$mData = html_entity_decode($mData, ENT_QUOTES, 'utf-8');
 		}
 
 		return $mData;
