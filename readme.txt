@@ -3,7 +3,7 @@ Contributors: contentde
 Donate link: http://www.content.de/
 Tags: content.de, seo, text, unique content, copywriting, keywords, content creation, Content Erstellung, content optimization, crowdsourcing, optimized texts, search engine optimization, seo, SEOText, SEO Texte, suchmaschinenoptimierte Texte, suchmaschinenoptimierung, text creation, text optimization, texte, Texterstellung, Webinhalte generieren, blogger, content, content marketing, content software, copywriter, freelance writer, freelancer, hire blogger, hire writer, seo content, seo software, web site content, website content, writer
 Requires at least: 3.2
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
