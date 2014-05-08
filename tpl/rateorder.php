@@ -56,7 +56,7 @@ var contentdeOrder = "<?php echo $aParams['order']['order_id'] ?>";
 
 	<div class="orderInfo">
 		<span>Kosten</span>
-		<?php echo contentdeHelper::formatNumber($aParams['order']['type'], 'Eur'); ?>
+		<?php echo contentdeHelper::formatNumber($aParams['order']['costs'], 'Eur'); ?>
 	</div>
 
 	<div class="orderInfo">
