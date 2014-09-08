@@ -74,6 +74,7 @@ function contentdeTemplateMain($aParams) { ?>
 	<table class="wp-list-table widefat fixed">
 		<thead>
 			<tr>
+				<th>Id</th>
 				<th>Titel</th>
 				<th>Status</th>
 				<th>bearbeiten</th>
@@ -83,6 +84,7 @@ function contentdeTemplateMain($aParams) { ?>
 			<?php if(count($aParams['orderList']) > 0): ?>
 			<?php foreach($aParams['orderList'] as $aOrder): ?>
 			<tr>
+				<td><?php echo $aOrder['order_id']; ?></td>
 				<th><?php echo $aOrder['order_title']; ?></th>
 				<td><?php echo $aStates[$aOrder['order_status']]; ?></td>
 				<td>
