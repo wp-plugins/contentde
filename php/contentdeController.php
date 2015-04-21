@@ -103,7 +103,7 @@ class contentdeController
 				'contentde-main',
 				array(__CLASS__, 'execute'),
 				contentdeHelper::getPluginUrl('img/logo.gif'),
-				6
+				'6.53'
 			);
 
 			add_submenu_page(
@@ -144,7 +144,7 @@ class contentdeController
 				'contentde-settings',
 				array(__CLASS__, 'execute'),
 				contentdeHelper::getPluginUrl('img/logo.gif'),
-				6
+				'6.53'
 			);
 
 			add_submenu_page(
