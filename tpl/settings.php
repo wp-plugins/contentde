@@ -16,7 +16,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-function contentdeTemplateSettings($aParams) { ?>
+function contentdeTemplateSettings($aParams) {
+
+	$aPerPage = array(
+		5 => 5,
+		10 => 10,
+		20 => 20,
+		30 => 30,
+		50 => 50,
+		75 => 75,
+		100 => 100,
+	);
+?>
 
 <div class="wrap">
 
@@ -44,6 +55,40 @@ function contentdeTemplateSettings($aParams) { ?>
 					<?php else: ?>
 					<input type="submit" name="save_login_data" value="Speichern" class="button-primary" />
 					<?php endif; ?>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<h2>Pager</h2>
+
+	<form action="<?php echo contentdeHelper::getPageUrl('settings', array('noheader' => 1)); ?>" method="post">
+		<table class="form-table">
+			<tr>
+				<th>Aufträge pro Seite</th>
+				<td><?php echo contentdeHelper::buildSelect($aPerPage, CONTENTDE_PAGER_PER_PAGE, array('name' => 'perPage')); ?></td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<input type="submit" name="save_per_page" value="Speichern" class="button-primary" />
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<h2>Erweitert</h2>
+
+	<form action="<?php echo contentdeHelper::getPageUrl('settings', array('noheader' => 1)); ?>" method="post">
+		<table class="form-table">
+			<tr>
+				<th>bei Klick "Seite/Beitrag erstellen" Order automatisch archivieren</th>
+				<td><input type="checkbox" value="1" name="param_post_and_archive" <?php echo (CONTENTDE_POST_AND_ARCHIVE == 1)? 'checked="checked"': ""?>/></td>
+			</tr>
+			<tr>
+				<th></th>
+				<td>
+					<input type="submit" name="save_post_and_archive" value="Speichern" class="button-primary" />
 				</td>
 			</tr>
 		</table>

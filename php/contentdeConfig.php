@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2012  content.de AG  (email: info[YEAR]@content.de (eg: info2012@content.de))
+ * Copyright 2015  content.de AG  (email: info[YEAR]@content.de (eg: info2015@content.de))
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -30,6 +30,8 @@ define('CONTENTDE_PARAM_LAST_STATE', CONTENTDE_PARAM_PREFIX . 'last' . 'State');
 define('CONTENTDE_PARAM_LAST_ARCHIVE', CONTENTDE_PARAM_PREFIX . 'last' . 'Archive');
 define('CONTENTDE_PARAM_LOGIN_INFO', CONTENTDE_PARAM_PREFIX . 'login' . 'Info');
 define('CONTENTDE_PARAM_SAVED_ORDERS', CONTENTDE_PARAM_PREFIX . 'saved' . 'Orders');
+define('CONTENTDE_PARAM_PAGER_PER_PAGE', CONTENTDE_PARAM_PREFIX . 'pager' . 'PerPage');
+define('CONTENTDE_PARAM_POST_AND_ARCHIVE', CONTENTDE_PARAM_PREFIX . 'post' . 'AndArchive');
 
 define('CONTENTDE_BASE_CAPABILITY', 'edit_posts');
 define('CONTENTDE_SETTINGS_CAPABILITY', 'manage_options');

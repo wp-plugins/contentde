@@ -20,7 +20,7 @@
 Plugin Name: content.de Wordpress-Plugin
 Plugin URI: http://www.content.de/wordpress-plugin
 Description: Verwalten Sie Ihre content.de Auftr&auml;ge direkt aus Wordpress heraus.
-Version: 1.0.12
+Version: 1.0.13
 Author: content.de AG
 Author URI: http://www.content.de/
 License: GPLv2
@@ -60,6 +60,8 @@ class contentde
 
 				define('CONTENTDE_LOGIN', get_option(CONTENTDE_PARAM_LOGIN, ''));
 				define('CONTENTDE_PASSWORD', get_option(CONTENTDE_PARAM_PASSWORD, ''));
+				define('CONTENTDE_PAGER_PER_PAGE', get_option(CONTENTDE_PARAM_PAGER_PER_PAGE, 20));
+				define('CONTENTDE_POST_AND_ARCHIVE', get_option(CONTENTDE_PARAM_POST_AND_ARCHIVE, 0));
 
 				define(
 					'CONTENTDE_HAS_LOGIN_DATA',

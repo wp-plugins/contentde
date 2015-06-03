@@ -476,16 +476,18 @@ class contentdeApi
 	 * @param string $sType
 	 * @param string $sLevel
 	 * @param int $iWordCount
+	 * @param string $sProjectId
 	 * @return array
 	 */
-	public function calculateOrderPrice($sType, $sLevel, $iWordCount)
+	public function calculateOrderPrice($sType, $sLevel, $iWordCount, $sProjectId = "")
 	{
 		$aResult = $this->getRpcModule()->doRequest(
 			'c' . 'alculateOrderPrice',
 			$this->sSessionHash,
 			$sType,
 			$sLevel,
-			$iWordCount
+			$iWordCount,
+			$sProjectId
 		);
 
 		return $aResult['Records'];

@@ -229,7 +229,7 @@ var briefings = <?php echo json_encode($aParams['briefings']); ?>;
 				<tr>
 					<th>Projekt</th>
 					<td>
-						<?php echo contentdeHelper::buildSelect($aProjects, contentdeHelper::getValue($aFormData, 'project'), array('name' => 'new_order[project]', 'class' => 'contentde-input')); ?>
+						<?php echo contentdeHelper::buildSelect($aProjects, contentdeHelper::getValue($aFormData, 'project'), array('name' => 'new_order[project]', 'class' => 'contentde-input','id' => 'new_order_project')); ?>
 					</td>
 				</tr>
 

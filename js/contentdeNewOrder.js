@@ -26,7 +26,9 @@
 			'#orderDataOO select[name="new_order[oo_level]"],' +
 			'#orderDataGO select[name="new_order[go_level]"],' +
 			'#orderDataGO select[name="new_order[go_group]"],' +
-			'#orderDataDO select[name="new_order[do_contractor]"]'
+			'#orderDataDO select[name="new_order[do_contractor]"],' +
+			'#orderData input[name="new_order[max_words]"],' +
+			'#new_order_project'
 		).change(function () {
 			switch($('#orderTypeSelect select[name="new_order[type]"]').val())
 			{
@@ -106,6 +108,7 @@
 				var type = $('#orderTypeSelect select[name="new_order[type]"]').val();
 				var wordCount = $('#orderData input[name="new_order[max_words]"]').val();
 				var level = '';
+				var project = $('#new_order_project').val();
 
 				$('#loadingCosts').show();
 				
@@ -128,7 +131,9 @@
 						'action': 'contentde-calcNewOrder',
 						'type': type,
 						'level': level,
-						'wordCount': wordCount
+						'wordCount': wordCount,
+						'project': project
+
 					},
 					function (result) {
 						if(result)

@@ -244,11 +244,11 @@ class contentdeApiHandler
 	 * @param int $iWordCount
 	 * @return array
 	 */
-	public function calculateOrderPrice($sType, $sLevel, $iWordCount)
+	public function calculateOrderPrice($sType, $sLevel, $iWordCount, $sProject)
 	{
 		$this->checkLogin();
 
-		return $this->oApi->calculateOrderPrice($sType, $sLevel, $iWordCount);
+		return $this->oApi->calculateOrderPrice($sType, $sLevel, $iWordCount, $sProject);
 	}
 
 	/**

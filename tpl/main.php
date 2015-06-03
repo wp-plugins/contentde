@@ -81,7 +81,7 @@ function contentdeTemplateMain($aParams) { ?>
 			</tr>
 		</thead>
 		<tbody>
-			<?php if(count($aParams['orderList']) > 0): ?>
+			<?php if(count($aParams['orderList']) > 0):  ?>
 			<?php foreach($aParams['orderList'] as $aOrder): ?>
 			<tr>
 				<td><?php echo $aOrder['order_id']; ?></td>

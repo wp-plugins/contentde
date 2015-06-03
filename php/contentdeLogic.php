@@ -189,7 +189,7 @@ class contentdeLogic
 				$sSelectedArchive
 			);
 
-			$oPager = new contentdePager($aOrderList, $oRequest);
+			$oPager = new contentdePager($aOrderList, $oRequest, CONTENTDE_PAGER_PER_PAGE);
 
 			if($oRequest->hasParam('contentdeOrderCreated'))
 			{
@@ -296,6 +296,32 @@ class contentdeLogic
 					die();
 				}
 			}
+            elseif($oRequest->hasParam('save_per_page'))
+            {
+
+                $iPerPage = (int) $oRequest->getParam('perPage', '');
+                update_option(CONTENTDE_PARAM_PAGER_PER_PAGE, $iPerPage);
+
+                if($oRequest->hasParam('noheader'))
+                {
+                    wp_redirect(contentdeHelper::getPageUrl('settings'));
+
+                    die();
+                }
+            }
+            elseif($oRequest->hasParam('save_post_and_archive'))
+            {
+
+                $bPostAndArchive = (int) $oRequest->getParam('param_post_and_archive', 0);
+                update_option(CONTENTDE_PARAM_POST_AND_ARCHIVE, $bPostAndArchive);
+
+                if($oRequest->hasParam('noheader'))
+                {
+                    wp_redirect(contentdeHelper::getPageUrl('settings'));
+
+                    die();
+                }
+            }
 
 			if($oRequest->hasParam('noheader'))
 			{
@@ -412,11 +438,13 @@ class contentdeLogic
 			$aOrderCosts = $oApiHandler->calculateOrderPrice(
 				$oRequest->getParam('type'),
 				$oRequest->getParam('level'),
-				$oRequest->getParam('wordCount')
+				$oRequest->getParam('wordCount'),
+				$oRequest->getParam('project')
 			);
 
 			$fCostsPerWord = $aOrderCosts['order_costs_per_word'];
 			$fCosts = $aOrderCosts['order_costs'];
+			$sProjectSettingsId = $aOrderCosts['project_settings_id'];
 		}
 		catch(Exception $oError)
 		{
@@ -608,6 +636,12 @@ class contentdeLogic
 						$aRealOrder = contentdeController::getApiHandler()->getOrder(
 							contentdeController::getRequest()->getParam('contentdeOrder')
 						);
+
+
+                        if(CONTENTDE_POST_AND_ARCHIVE == 1 && is_array($aRealOrder) && isset($aRealOrder['order_id']) )
+                        {
+                            contentdeController::getApiHandler()->archiveOrder($aRealOrder['order_id'], true);
+                        }
 
 						$aKeywords = array();
 
